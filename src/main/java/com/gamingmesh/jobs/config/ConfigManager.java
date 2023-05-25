@@ -1536,6 +1536,11 @@ public class ConfigManager {
                         double experience = section.getDouble("experience");
                         experience = updateValue(CurrencyType.EXP, experience);
 
+                        int modelData = section.getInt("model-data", -1);
+                        if (modelData != -1) {
+                            meta = String.valueOf(modelData);
+                        }
+
                         int fromlevel = section.getInt("from-level", 1);
 
                         int untilLevel = -1;

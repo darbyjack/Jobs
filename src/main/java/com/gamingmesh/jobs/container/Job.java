@@ -30,6 +30,7 @@ import java.util.Random;
 import java.util.function.BiPredicate;
 
 import com.gamingmesh.jobs.actions.EnchantActionInfo;
+import com.gamingmesh.jobs.actions.SmeltingActionInfo;
 import com.gamingmesh.jobs.stuff.Util;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
@@ -294,6 +295,11 @@ public class Job {
 	    if (actionInfo instanceof EnchantActionInfo) {
 		return Util.enchantMatchesActionInfo(jobInfo.getName(), (EnchantActionInfo) actionInfo);
 	    }
+
+        if (actionInfo instanceof SmeltingActionInfo && !jobInfo.getMeta().isEmpty()) {
+            SmeltingActionInfo smeltingActionInfo = (SmeltingActionInfo) actionInfo;
+            return smeltingActionInfo.getCmd() == Integer.parseInt(jobInfo.getMeta());
+        }
 
 	    return jobInfo.getName().equalsIgnoreCase(action.getNameWithSub()) ||
 		(jobInfo.getName() + ":" + jobInfo.getMeta()).equalsIgnoreCase(action.getNameWithSub()) ||

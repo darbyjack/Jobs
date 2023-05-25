@@ -26,6 +26,7 @@ import java.util.Map.Entry;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import com.gamingmesh.jobs.actions.SmeltingActionInfo;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -1234,7 +1235,7 @@ public final class JobsPaymentListener implements Listener {
         if (Jobs.getGCManager().disablePaymentIfRiding && player.isInsideVehicle())
             return;
 
-        Jobs.action(Jobs.getPlayerManager().getJobsPlayer(player), new ItemActionInfo(event.getResult(), ActionType.SMELT));
+        Jobs.action(Jobs.getPlayerManager().getJobsPlayer(player), new SmeltingActionInfo(event.getResult(), ActionType.SMELT));
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
